@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if request.user.is_authenticated %}
+      <title>Ноутбуки</title>
+        
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <body>
+      <div class="container mt-5">
+          <div class="row">
+              {% for laptop in laptop_obj %}
+                  <div class="col-md-4 mb-4">
+                      <div class="card">
+                          <img src="{{ laptop.image.url }}" width="200", height="200" >
+                          <div class="card-body">
+                              <h5 class="card-title">{{ laptop.company }}</h5>
+                              <p class="card-text"><strong>Модель:</strong> {{ laptop.model }}</p>
+                              <p class="card-text"><strong>Цена:</strong> {{ laptop.price }} $</p>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+      </div>
+    {% else %}
+      <title>Регистрация</title>
+            
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+      <div class="container mt-5">
+
+        <div class="alert alert-success" role="alert">
+
+
+          <p>Чтобы увидеть ноутбуки, телевизоры или акксесуары проходите регистрация</p>
+    
+
+        </div>
+
+      </div>
+    
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  {% endif %}
+{% endblock %}

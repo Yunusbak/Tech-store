@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Список покупок</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<body>
+    <div class="container mt-4">
+        <h2>Список покупок</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ф.И</th>
+                    <th>Телефон</th>
+                    <th>Ноутбук</th>
+                    <th>Аксессуар</th>
+                    <th>Дата покупки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pokupka in pokupki %}
+                <tr>
+                    <td>{{ pokupka.user.first_name }}  {{pokupka.user.last_name}}</td>
+                    <td>{{ pokupka.phone.model|default_if_none:"-" }}</td>
+                    <td>{{ pokupka.laptop.model|default_if_none:"-" }}</td>
+                    <td>{{ pokupka.accessory.name|default_if_none:"-" }}</td>
+                    <td>{{ pokupka.pokupka_date}}</td> 
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">Нет доступных покупок.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+{% endblock %}

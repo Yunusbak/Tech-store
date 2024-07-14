@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if request.user.is_authenticated %}
+          <title>Регистрация</title>
+                
+          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      
+          <div class="container mt-5">
+
+            <div class="alert alert-success" role="alert">
+
+              <h4 class="alert-heading">вы прошли регистрацию</h4>
+
+              <p>Теперь можете увидеть наши товары... У нас есть ноутбуки, телевизоры и акксесуары</p>
+        
+            </div>
+
+          </div>
+        
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      
+
+  {% else %}
+          <title>Регистрация</title>
+          
+          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+       
+          <div class="container mt-5">
+
+            <div class="alert alert-success" role="alert">
+
+              <h4 class="alert-heading">Регистрация</h4>
+
+              <p>Чтобы увидеть ноутбуки, телевизоры или акксесуары проходите регистрация</p>
+        
+
+            </div>
+
+          </div>
+        
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  {% endif %}
+{% endblock %}

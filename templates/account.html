@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Account Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<body>
+    <div class="container mt-5">
+        <h1><center>Account Info</center></h1>
+        <div class="card">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <p class="card-text"><strong>Name:</strong> {{ user.first_name }}</p>
+                    <p class="card-text"><strong>Last Name:</strong> {{ user.last_name }}</p>
+                    <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                {% else %}
+                    <p>You are not logged in.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}
