@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Company, Phone, Laptop, Accessories, Pokupka
+from .models import Company, Phone, Laptop, Accessories
 
-admin.site.register([Company, Pokupka])
+admin.site.register(Company)
 
 @admin.register(Phone)
 class PhoneAdmin(admin.ModelAdmin):

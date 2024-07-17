@@ -1,0 +1,11 @@
+<h1>accessories crud</h1>
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+
+</body>

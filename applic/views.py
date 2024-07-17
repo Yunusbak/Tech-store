@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
-from .models import Phone, Laptop, Accessories, Pokupka
-from django.contrib.auth.decorators import login_required
+from .models import Phone, Laptop, Accessories
+from django.urls import reverse
+from .forms import PhoneForm, AccessoriesForm, LaptopForm
+
 
 
 def home_view(request):
@@ -54,30 +56,101 @@ def logout_view(request):
     logout(request)
     return redirect("login")
 
-@login_required
-def phone(request):
+
+def phone_view(request):
     phone_obj = Phone.objects.all()
     context = {"phone_obj" : phone_obj}
     return render(request, "phone.html", context=context)
 
-@login_required
-def laptop(request):
+
+def phone_detail_view(request, id):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    phone_detail_obj = get_object_or_404(Phone, id=id)
+    context = {"phone_detail_obj": phone_detail_obj}
+    return render(request, "phone_detail.html", context=context)
+
+
+def laptop_view(request):
     laptop_obj = Laptop.objects.all()
     context = {"laptop_obj": laptop_obj}
     return render(request, "laptop.html", context=context)
 
-@login_required
-def accessories(request):
+def laptop_detail_view(request, id):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    laptop_detail_obj = get_object_or_404(Laptop, id=id)
+    context = {"laptop_detail_obj": laptop_detail_obj}
+    return render(request, "laptop_detail.html", context=context)
+
+def accessories_view(request):
     accessories_obj = Accessories.objects.all()
     context = {"accessories_obj" : accessories_obj}
     return render(request, "accessories.html", context=context)
+
+
+def accessories_detail_view(request, id):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    accessories_detail_obj = get_object_or_404(Accessories, id=id)
+    context = {"accessories_detail_obj": accessories_detail_obj}
+    return render(request, "accessories_detail.html", context=context)
 
 
 def account_view(request):
     context = {"user": request.user}
     return render(request, "account.html", context=context)
 
+def phone_create(request):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    elif request.method == 'POST':
+        form = PhoneForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("phone")
+        
+    form = PhoneForm()
+    context = {"form": form}
+    return render(request, "phone_crud.html", context=context)
 
-def pokupka_view(request):
-    pokupki = Pokupka.objects.all()
-    return render(request, 'pokupka.html', {'pokupki': pokupki})
+def phone_delete(request, id):
+    phone_delete_obj = get_object_or_404(Phone, id = id)
+    phone_delete_obj.delete()
+    return redirect("phone")
+
+def laptop_create(request):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    if request.method == 'POST':
+        form = LaptopForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("laptop")
+    form = LaptopForm()
+    context = {"form": form}
+    return render(request, "laptop_crud.html", context=context)
+
+def laptop_delete(request, id):
+    laptop_delete_obj = get_object_or_404(Laptop, id = id)
+    laptop_delete_obj.delete()
+    return redirect("laptop")
+
+
+def accessories_create(request):
+    if not request.user.is_authenticated:
+        return redirect(reverse("register"))
+    if request.method == 'POST':
+        form = AccessoriesForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("accessories")
+            
+    form = AccessoriesForm()
+    context = {"form": form}
+    return render(request, "accessories_crud.html", context=context)
+
+def accessories_delete(request, id):
+    accessories_delete_obj = get_object_or_404(Accessories, id = id)
+    accessories_delete_obj.delete()
+    return redirect("accessories")

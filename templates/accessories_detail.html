@@ -1,0 +1,14 @@
+
+<!-- accessories_detail.html -->
+<title>Акксесуар страница</title>
+<body>
+    <img src="{{accessories_detail_obj.image.url}}" width="200", height="200">
+    <p>name : {{accessories_detail_obj.name}}</p>
+    <p>price : {{accessories_detail_obj.price}}</p>
+
+    <form action="{% url 'accessories-delete' accessories_detail_obj.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+</body>
+
