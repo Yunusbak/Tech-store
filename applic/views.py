@@ -154,3 +154,44 @@ def accessories_delete(request, id):
     accessories_delete_obj = get_object_or_404(Accessories, id = id)
     accessories_delete_obj.delete()
     return redirect("accessories")
+
+def phone_update(request, id):
+    phone_update_obj = get_object_or_404(Phone, id=id)  
+    if request.method == 'POST':
+        form = PhoneForm(request.POST, request.FILES, instance=phone_update_obj)
+        if form.is_valid():
+            form.save()
+            return redirect("phone")  
+    else:
+        form = PhoneForm(instance=phone_update_obj)
+    return render(request, 'phone_update.html', {'form': form})
+
+def laptop_update(request, id):
+    laptop_update_obj = get_object_or_404(Laptop, id=id)
+    if request.method == 'POST':
+        form = LaptopForm(request.POST, request.FILES, instance=laptop_update_obj)
+        if form.is_valid():
+            form.save()
+            return redirect("laptop")
+        
+    else:
+        form=LaptopForm(instance=laptop_update_obj)
+    return render(request, "laptop_update.html", {"form" : form})
+    
+
+
+def accessories_update(request, id):
+    accessories_update_obj = get_object_or_404(Accessories, id=id)
+    if request.method == 'POST':
+        form = AccessoriesForm(request.POST, request.FILES, instance=accessories_update_obj)
+        if form.is_valid():
+            form.save()
+            return redirect("accessories")
+        
+    else:
+        form=AccessoriesForm(instance=accessories_update_obj)
+    return render(request, "accessories_update.html", {"form" : form})
+
+
+def info(request):
+    return render(request, "info.html")

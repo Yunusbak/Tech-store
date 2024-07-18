@@ -1,43 +1,70 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-  {% if request.user.is_authenticated %}
-          <title>Регистрация</title>
-                
-          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-      
-          <div class="container mt-5">
-
-            <div class="alert alert-success" role="alert">
-
-              <h4 class="alert-heading">вы прошли регистрацию</h4>
-
-              <p>Теперь можете увидеть наши товары... У нас есть ноутбуки, телевизоры и акксесуары</p>
-        
-            </div>
-
+  {% load static %}
+  <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-8">
+              <h2 class="text-primary">Добро пожаловать в наш магазин!</h2>
+              <p>Мы предлагаем широкий ассортимент телефонов, ноутбуков и аксессуаров по выгодным ценам.</p>
+              
+              <h3 class="text-secondary">Новинки и специальные предложения</h3>
+              <div class="row">
+                  <div class="col-lg-4 mb-4">
+                      <div class="card">
+                          <center><img src="{% static 'phone_image.jpg' %}"   alt="Телефон" width="130" height="200"></center>
+                          <div class="card-body">
+                              <h5 class="card-title">iPhone 12</h5>
+                              <p class="card-text">Новый iPhone с улучшенной камерой и производительностью.</p>
+                              <a href="{% url 'phone' %}" class="btn btn-primary">Подробнее</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 mb-4">
+                      <div class="card">
+                          <img src="{% static 'laptop_image.jpg' %}" class="card-img-top" alt="Ноутбук" width="200" height="140">
+                          <div class="card-body">
+                              <h5 class="card-title">Dell XPS 15</h5>
+                              <p class="card-text">Мощный ноутбук для работы и развлечений.</p>
+                              <a href="{% url 'laptop' %}" class="btn btn-primary">Подробнее</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 mb-4">
+                      <div class="card">
+                          <img src="{% static 'accessory_image.jpg' %}" class="card-img-top" alt="Аксессуар" width="100" height="200">
+                          <div class="card-body">
+                              <h5 class="card-title">Наушники Sony WH-1000XM4</h5>
+                              <p class="card-text">Отличные наушники с шумоподавлением и высоким качеством звука.</p>
+                              <a href="{% url 'accessories' %}" class="btn btn-primary">Подробнее</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      
+      </div>
+  </div>
 
-  {% else %}
-          <title>Регистрация</title>
-          
-          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-       
-          <div class="container mt-5">
-
-            <div class="alert alert-success" role="alert">
-
-              <h4 class="alert-heading">Регистрация</h4>
-
-              <p>Чтобы увидеть ноутбуки, телевизоры или акксесуары проходите регистрация</p>
-        
-
-            </div>
-
+  <div class="container-fluid bg-light text-dark py-4">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                  <h5>Связаться с нами</h5>
+                  <p>Телефон: +998 91 001-94-03<br>Email: yunusbek_shop@gmail.com</p>
+              </div>
           </div>
-        
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  {% endif %}
+      </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-body">
+        <h5 class="card-title">Следите за нами</h5>
+        <p class="card-text">Мы активны в социальных сетях. Подписывайтесь!</p>
+        <a href="https://telegram.me/YUNUSBACK" >
+            <img src="{% static 'telegram_logo.jpg' %}" class="social-icon" width="40" height="40"> Telegram
+        </a>
+        <a href="https://instagram.com/yunusbakk" >
+            <img src="{% static 'instagram_logo.jpg' %}" class="social-icon" width="30" height="30"> Instagram
+        </a>
+    </div>
+</div>
 {% endblock %}

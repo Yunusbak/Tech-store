@@ -16,3 +16,4 @@ class LaptopForm(ModelForm):
     class Meta:
         model = Laptop
         fields = ["company", "model", "image", "price"]
+

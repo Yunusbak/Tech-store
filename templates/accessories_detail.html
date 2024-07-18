@@ -2,13 +2,15 @@
 <!-- accessories_detail.html -->
 <title>Акксесуар страница</title>
 <body>
+    {% csrf_token %}
     <img src="{{accessories_detail_obj.image.url}}" width="200", height="200">
     <p>name : {{accessories_detail_obj.name}}</p>
     <p>price : {{accessories_detail_obj.price}}</p>
 
-    <form action="{% url 'accessories-delete' accessories_detail_obj.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Удалить</button>
-    </form>
+    <a href="{% url 'accessories-delete' accessories_detail_obj.id %}"><button>Удалить</button></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="{% url 'accessories-update' accessories_detail_obj.id %}"><button>Изменить</button></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="{% url 'accessories' %}"><button>назад</button></a>
 </body>
 

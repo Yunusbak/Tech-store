@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Info</title>
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+            <div class="container mt-4">
+
+                <div class="container-fluid bg-light text-dark py-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>О нас</h5>
+                                <p>Мы занимаемся продажей высококачественных телефонов, ноутбуков и аксессуаров с доставкой по всему Узбекистану.</p>
+                                <p>Рабочий график:</p>
+                                <p>С понедельника по четверг</p>
+                                <p>понедельник : 10:00 -- 18:00</p>
+                                <p>вторник : 10:00 -- 18:00</p>
+                                <p>среда : 10:00 -- 18:00</p>
+                                <p>четверг : 10:00 -- 16:00</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </body>
+        </html>
+        <div class="container-fluid bg-light text-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Связаться с нами</h5>
+                        <p>Телефон: +998 91 001-94-03<br>Email: yunusbek_shop@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+          <div class="card-body">
+              <h5 class="card-title">Следите за нами</h5>
+              <p class="card-text">Мы активны в социальных сетях. Подписывайтесь!</p>
+              <a href="https://telegram.me/YUNUSBACK" >
+                  <img src="{% static 'telegram_logo.jpg' %}" class="social-icon" width="40" height="40"> Telegram
+              </a>
+              <a href="https://instagram.com/yunusbakk" >
+                  <img src="{% static 'instagram_logo.jpg' %}" class="social-icon" width="30" height="30"> Instagram
+              </a>
+          </div>
+{% endblock %}

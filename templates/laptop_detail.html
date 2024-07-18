@@ -1,12 +1,20 @@
 <title>Ноутбук страница</title>
 
 <body>
+    {% csrf_token %}
     <img src="{{laptop_detail_obj.image.url}}" width="200", height="200">
     <p>company : {{laptop_detail_obj.company}}</p>
     <p>model : {{laptop_detail_obj.model}}</p>
     <p>price : {{laptop_detail_obj.price}} $</p>
-    <form action="{% url 'laptop-delete' laptop_detail_obj.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Удалить</button>
-    </form>
+    &nbsp;&nbsp;&nbsp;
+
+    <a href="{% url 'laptop-delete' laptop_detail_obj.id %}"><button>Удалить</button></a>
+    &nbsp;&nbsp;&nbsp;
+
+    <a href="{% url 'laptop-update' laptop_detail_obj.id %}"><button>Изменить</button></a>
+
+    &nbsp;&nbsp;&nbsp;
+    <a href="{% url 'laptop' %}"><button>назад</button></a>
+
+
 </body>

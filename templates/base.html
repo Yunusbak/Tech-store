@@ -1,5 +1,4 @@
 
-    <title>HOME</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <body>
@@ -10,21 +9,26 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                        <a class="nav-link" href="{% url 'phone' %}">ТЕЛЕФОН <span class="sr-only">(текущий)</span></a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="{% url 'laptop' %}">НОУТБУК</a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accessories' %}">АКСЕССУАР</a>
-                </li>
-            </ul>
+            
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'phone' %}">ТЕЛЕФОН <span class="sr-only">(текущий)</span></a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'laptop' %}">НОУТБУК</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accessories' %}">АККСЕССУАР</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'info' %}">ИНФО</a>
+                        </li>
+                    </ul>
             
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    profile
+                account
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 

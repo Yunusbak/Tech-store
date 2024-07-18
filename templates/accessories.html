@@ -14,7 +14,7 @@
                         <div class="card">
                             <img src="{{ accessories.image.url }}" width="200", height="200" >
                             <div class="card-body">
-                                <h5 class="card-title"><a href="{% url 'accessories_detail' accessories.id %}">{{accessories.name}}</a></h5>
+                                <a href="{% url 'accessories_detail' accessories.id %}"><button>{{accessories.name}}</button></a>
                             </div>
                         </div>
                     </div>

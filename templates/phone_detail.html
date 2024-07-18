@@ -5,14 +5,23 @@
     <title>Телефон страница</title>
 </head>
 <body>
-    <img src="{{ phone_detail_obj.image.url }}" width="200" height="200">
-    <p>company : {{ phone_detail_obj.company }}</p>
-    <p>name : {{ phone_detail_obj.model }}</p>
-    <p>price : {{ phone_detail_obj.price }} $</p>
+    <center>
+    
+        <img src="{{ phone_detail_obj.image.url }}" width="200" height="200">
+        <p>company : {{ phone_detail_obj.company }}</p>
+        <p>name : {{ phone_detail_obj.model }}</p>
+        <p>price : {{ phone_detail_obj.price }} $</p>
+        
+        <a href="{% url 'phone-delete' phone_detail_obj.id %}"><button type="submit">Удалить</button></a>
+                     
+        &nbsp;&nbsp;&nbsp;
 
-    <form action="{% url 'phone-delete' phone_detail_obj.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Удалить</button>
-    </form>
+        <a href="{% url 'phone-update' phone_detail_obj.id %}"><button type="submit">Изменить</button></a>
+
+        &nbsp;&nbsp;&nbsp;
+
+        <a href="{% url 'phone' %}"><button>назад</button></a>
+        
+    </center>
 </body>
 </html>
