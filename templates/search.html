@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if phones %}
+   
+    <ul>
+        {% for phone in phones %}
+                <img src="{{ phone.image.url }}" width="200" height="200">
+                <p>Компания: {{ phone.company.name }}</p>
+                <p>Модель: {{ phone.model }}</p>
+                <p>Цена: {{ phone.price }}</p>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if laptops %}
+    
+    <ul>
+        {% for laptop in laptops %}
+    
+                <img src="{{ laptop.image.url }}" width="200" height="200">
+                <p>Компания: {{ laptop.company.name }}</p>
+                <p>Модель: {{ laptop.model }}</p>
+                <p>Цена: {{ laptop.price }}</p>
+         
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if accessories %}
+    <ul>
+        {% for accessory in accessories %}
+            
+                <img src="{{ accessory.image.url }}" width="200" height="200">
+                <p>Название: {{ accessory.name }}</p>
+                <p>Цена: {{ accessory.price }}</p>
+            
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if not phones and not laptops and not accessories %}
+    <p>Ничего не найдено</p>
+{% endif %}
+{% endblock %}

@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-
-      <title>Ноутбуки</title>
+    <title>Ноутбуки</title>
         
-      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <body>
       <div class="container mt-5">
@@ -22,8 +21,8 @@
                   </div>
               {% endfor %}
           </div>
-      </div>
-
+      </div>        
+    </body>
     <a href="{% url 'laptop-create' %}"><button>добавить Ноутбук</button></a>
 
 {% endblock %}

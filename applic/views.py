@@ -4,8 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from .models import Phone, Laptop, Accessories
 from django.urls import reverse
-from .forms import PhoneForm, AccessoriesForm, LaptopForm
-
+from .forms import PhoneForm, AccessoriesForm, LaptopForm, SearchForm
 
 
 def home_view(request):
@@ -50,7 +49,6 @@ def login_view(request):
             return render(request, "login.html", context={"message_login": "такого пользователя не существует"})
     
     return render(request, "login.html")
-
 
 def logout_view(request):
     logout(request)
@@ -195,3 +193,18 @@ def accessories_update(request, id):
 
 def info(request):
     return render(request, "info.html")
+
+
+def search_view(request):
+    query = request.GET.get('query')
+    phones = Phone.objects.filter(model__icontains=query) if query else []
+    laptops = Laptop.objects.filter(model__icontains=query) if query else []
+    accessories = Accessories.objects.filter(name__icontains=query) if query else []
+    
+    context = {
+        'phones': phones,
+        'laptops': laptops,
+        'accessories': accessories,
+        'query': query,
+    }
+    return render(request, 'search.html', context)

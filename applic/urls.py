@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home_view, register_view, login_view, account_view, logout_view, phone_view, phone_detail_view, accessories_view, accessories_detail_view, laptop_view, laptop_detail_view, phone_create, accessories_create, laptop_create, phone_delete, laptop_delete, accessories_delete, phone_update, laptop_update, accessories_update, info
+from .views import home_view, register_view, login_view, account_view, logout_view, phone_view, phone_detail_view, accessories_view, accessories_detail_view, laptop_view, laptop_detail_view, phone_create, accessories_create, laptop_create, phone_delete, laptop_delete, accessories_delete, phone_update, laptop_update, accessories_update, info, search_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -35,7 +35,7 @@ urlpatterns = [
     path("laptop_update/<int:id>/", laptop_update, name="laptop-update"),
     path("accessories_update/<int:id>/", accessories_update, name="accessories-update"),
 
-
+    path("search/", search_view, name="search")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

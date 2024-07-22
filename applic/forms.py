@@ -17,3 +17,8 @@ class LaptopForm(ModelForm):
         model = Laptop
         fields = ["company", "model", "image", "price"]
 
+
+from django import forms
+
+class SearchForm(forms.Form):
+    query = forms.CharField(label='Поиск', max_length=100)

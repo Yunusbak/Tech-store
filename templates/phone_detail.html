@@ -9,7 +9,7 @@
     
         <img src="{{ phone_detail_obj.image.url }}" width="200" height="200">
         <p>company : {{ phone_detail_obj.company }}</p>
-        <p>name : {{ phone_detail_obj.model }}</p>
+        <p>model : {{ phone_detail_obj.model }}</p>
         <p>price : {{ phone_detail_obj.price }} $</p>
         
         <a href="{% url 'phone-delete' phone_detail_obj.id %}"><button type="submit">Удалить</button></a>
