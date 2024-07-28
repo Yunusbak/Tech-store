@@ -1,41 +1,34 @@
 from django.urls import path
-from .views import home_view, register_view, login_view, account_view, logout_view, phone_view, phone_detail_view, accessories_view, accessories_detail_view, laptop_view, laptop_detail_view, phone_create, accessories_create, laptop_create, phone_delete, laptop_delete, accessories_delete, phone_update, laptop_update, accessories_update, info, search_view
-from django.conf import settings
-from django.conf.urls.static import static
-
+from .views import (home,  info, search, account,  RegisterView, LoginView, LogoutView,PhoneListView, PhoneDetailView, PhoneCreateView, PhoneUpdateView, PhoneDeleteView,LaptopListView, LaptopDetailView, LaptopCreateView, LaptopUpdateView, LaptopDeleteView,AccessoriesListView, AccessoriesDetailView, AccessoriesCreateView, AccessoriesUpdateView, AccessoriesDeleteView)
 
 urlpatterns = [
-    path("", home_view, name="home"),
-    path("register/", register_view, name="register"),
-    path("login/", login_view, name="login"),
-    path("account/", account_view, name="account"),
-    path("logout/", logout_view, name="logout"),
-    path("info/", info, name="info"),
+    path("", home, name = "home"),
+    path("info/", info, name = "info"), 
+    path("search/", search, name = "search"),
+    path("account/", account, name = 'account'),
 
-    path("phone/", phone_view, name="phone"),
-    path("laptop/", laptop_view, name="laptop"),
-    path("accessories/", accessories_view, name="accessories"),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 
-    path("phone_detail/<int:id>/", phone_detail_view, name="phone_detail"),
-    path("laptop_detail/<int:id>/", laptop_detail_view, name="laptop_detail"),
-    path("accessories_detail/<int:id>/", accessories_detail_view, name="accessories_detail"),
+    # Phone 
+    path('phones/', PhoneListView.as_view(), name='phone'),
+    path('phones/<int:pk>/', PhoneDetailView.as_view(), name='phone_detail'),
+    path('phones/create/', PhoneCreateView.as_view(), name='phone-create'),
+    path('phones/<int:pk>/update/', PhoneUpdateView.as_view(), name='phone-update'),
+    path('phones/<int:pk>/delete/', PhoneDeleteView.as_view(), name='phone-delete'),
 
+    # Laptop 
+    path('laptops/', LaptopListView.as_view(), name='laptop'),
+    path('laptops/<int:pk>/', LaptopDetailView.as_view(), name='laptop_detail'),
+    path('laptops/create/', LaptopCreateView.as_view(), name='laptop-create'),
+    path('laptops/<int:pk>/update/', LaptopUpdateView.as_view(), name='laptop-update'),
+    path('laptops/<int:pk>/delete/', LaptopDeleteView.as_view(), name='laptop-delete'),
 
-
-    path("phone_create/", phone_create, name="phone-create"),
-    path("laptop_create/", laptop_create, name="laptop-create"),
-    path("accessories_create/", accessories_create, name="accessories-create"),
-
-
-    path("phone_delete/<int:id>/", phone_delete, name="phone-delete"),
-    path("laptop_delete/<int:id>/", laptop_delete, name="laptop-delete"),
-    path("accessories_delete/<int:id>/", accessories_delete, name="accessories-delete"),
-
-    path("phone_update/<int:id>/", phone_update, name="phone-update"),
-    path("laptop_update/<int:id>/", laptop_update, name="laptop-update"),
-    path("accessories_update/<int:id>/", accessories_update, name="accessories-update"),
-
-    path("search/", search_view, name="search")
+    # Accessories 
+    path('accessories/', AccessoriesListView.as_view(), name='accessories'),
+    path('accessories/<int:pk>/', AccessoriesDetailView.as_view(), name='accessories_detail'),
+    path('accessories/create/', AccessoriesCreateView.as_view(), name='accessories-create'),
+    path('accessories/<int:pk>/update/', AccessoriesUpdateView.as_view(), name='accessories-update'),
+    path('accessories/<int:pk>/delete/', AccessoriesDeleteView.as_view(), name = 'accessories-delete')
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

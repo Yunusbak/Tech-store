@@ -10,7 +10,7 @@ class Company(models.Model):
 class Phone(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     model = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="media/Phone", blank=True, null=True)
+    image = models.ImageField(upload_to="Phone/", blank=True, null=True)
     price = models.IntegerField()
 
 
