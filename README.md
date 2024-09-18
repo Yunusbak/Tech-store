@@ -1,4 +1,4 @@
 Обычный джанго проект
 
-Framework : Django
+Framework : Django <br>
 Database : PostgreSQL
