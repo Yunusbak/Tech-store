@@ -1,2 +1,4 @@
+Обычный джанго проект
 
-A tech store that sells phones, laptops, and accessories.
+Framework : Django
+Database : PostgreSQL
