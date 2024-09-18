@@ -1,3 +1,5 @@
+from idlelib.rpc import request_queue
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -6,12 +8,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Phone, Laptop, Accessories
 from .forms import PhoneForm, LaptopForm, AccessoriesForm, RegisterForm
-from django.urls import reverse_lazy
+
 
 
 
 def home(request):
-        return render(request, "home.html")
+       return render(request, 'home.html')
 
 def info(request):
     return render(request, "info.html")
